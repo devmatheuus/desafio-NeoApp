@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { IGlobalTheme } from '../interfaces/globalTheme';
-
-type GlobalStyleType = { theme: IGlobalTheme };
+import { GlobalStyleType } from '../types/globalStyle';
 
 export const GlobalStyles = createGlobalStyle<GlobalStyleType>`
     * {

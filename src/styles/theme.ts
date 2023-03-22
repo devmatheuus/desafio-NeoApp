@@ -1,4 +1,4 @@
-import { IGlobalTheme } from '../interfaces/globalTheme';
+import { IGlobalTheme } from '../types/IGlobalTheme';
 
 export const theme: IGlobalTheme = {
   colors: {
