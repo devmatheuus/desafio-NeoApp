@@ -3,13 +3,25 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  padding: 2rem;
-  height: 5rem;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 
   background-color: ${({ theme }) => theme.colors.red};
   color: ${({ theme }) => theme.colors.white};
+
+  > div {
+    padding: 1rem 2rem;
+    width: 100%;
+    max-width: 1440px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
   h1 {
     font-size: ${({ theme }) => theme.fonts.sizes.large};
