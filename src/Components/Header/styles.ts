@@ -9,7 +9,7 @@ export const HeaderContainer = styled.header`
   left: 0;
   width: 100%;
 
-  background-color: ${({ theme }) => theme.colors.red};
+  background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
 
   > div {
