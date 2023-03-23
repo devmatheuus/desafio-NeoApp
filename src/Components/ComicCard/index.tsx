@@ -18,8 +18,8 @@ export const ComicCard: React.FC<IComicCard> = ({ comicData }: IComicCard) => {
           alt={title}
           title={title}
         />
-        <figcaption>{title}</figcaption>
       </figure>
+      <p>{title}</p>
     </Styled.CardContainer>
   );
 };
