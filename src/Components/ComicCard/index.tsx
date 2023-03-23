@@ -13,7 +13,11 @@ export const ComicCard: React.FC<IComicCard> = ({ comicData }: IComicCard) => {
   return (
     <Styled.CardContainer>
       <figure>
-        <img src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} />
+        <img
+          src={`${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`}
+          alt={title}
+          title={title}
+        />
         <figcaption>{title}</figcaption>
       </figure>
     </Styled.CardContainer>
