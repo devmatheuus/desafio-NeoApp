@@ -8,6 +8,7 @@ export const HeaderContainer = styled.header`
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 999;
 
   background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};

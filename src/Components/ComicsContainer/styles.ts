@@ -7,7 +7,7 @@ export const Container = styled.main`
 
   width: 100%;
   max-width: 1440px;
-  margin: 2rem auto;
+  margin: 4rem auto 6rem;
   padding: 0 1rem;
   gap: 3rem;
 `;

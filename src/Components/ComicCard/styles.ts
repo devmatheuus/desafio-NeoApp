@@ -13,7 +13,7 @@ export const CardContainer = styled.div`
     box-shadow: 0 26px 35px -15px rgba(0, 0, 0, 0.4);
 
     overflow: hidden;
-    height: auto;
+    max-height: 300px;
 
     display: flex;
     flex-direction: column;
