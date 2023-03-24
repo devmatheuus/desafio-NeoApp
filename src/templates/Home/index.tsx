@@ -10,19 +10,21 @@ import { useComics } from '../../contexts/ComicsContext';
 import * as Styled from './styles';
 
 export const Home: React.FC = () => {
-  const { loadMoreComics, isLoading } = useComics();
+  const { loadMoreComics, isLoading, search } = useComics();
   return (
     <>
       <Header />
       <ComicsBox />
       <ComicsContainer />
-      <Styled.GenericContainer>
-        {isLoading && <LoadingSpinner />}
+      {!search && (
+        <Styled.GenericContainer>
+          {isLoading && <LoadingSpinner />}
 
-        {!isLoading && (
-          <Button text="Load more" loadMoreComics={loadMoreComics} />
-        )}
-      </Styled.GenericContainer>
+          {!isLoading && (
+            <Button text="Load more" loadMoreComics={loadMoreComics} />
+          )}
+        </Styled.GenericContainer>
+      )}
       <Footer />
     </>
   );
