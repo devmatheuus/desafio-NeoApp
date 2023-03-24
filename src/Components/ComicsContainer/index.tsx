@@ -5,7 +5,7 @@ import { ComicCard } from '../ComicCard';
 import * as Styled from './styles';
 
 export const ComicsContainer: React.FC = () => {
-  const { comics, loadComics } = useComics();
+  const { comics, filteredComics, loadComics, search } = useComics();
 
   useEffect(() => {
     loadComics();
@@ -13,9 +13,13 @@ export const ComicsContainer: React.FC = () => {
 
   return (
     <Styled.Container>
-      {comics?.results?.map((comic) => {
-        return <ComicCard key={comic.id} comicData={comic} />;
-      })}
+      {filteredComics.results?.length > 0 && search
+        ? filteredComics.results.map((comic) => (
+            <ComicCard key={comic.id} comicData={comic} />
+          ))
+        : comics?.results?.map((comic) => {
+            return <ComicCard key={comic.id} comicData={comic} />;
+          })}
     </Styled.Container>
   );
 };
