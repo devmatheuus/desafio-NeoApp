@@ -17,6 +17,7 @@ export const ComicCard: React.FC<IComicCard> = ({ comicData }: IComicCard) => {
           src={`${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`}
           alt={title}
           title={title}
+          loading="lazy"
         />
       </figure>
       <p>{title}</p>
