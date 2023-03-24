@@ -1,3 +1,4 @@
+// eslint-disable-next-line prettier/prettier
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 
 import api from '../../services/api';
@@ -14,6 +15,10 @@ interface IComicsContext {
   loadComics: () => Promise<void>;
   loadMoreComics: () => Promise<void>;
   isLoading: boolean;
+  filteredComics: IComicData;
+  setFilteredComics: React.Dispatch<React.SetStateAction<IComicData>>;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+  search: string;
 }
 
 interface IComicsResponse {
@@ -34,8 +39,12 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
   children,
 }: IComicsProvider) => {
   const [comics, setComics] = useState<IComicData>({} as IComicData);
+  const [filteredComics, setFilteredComics] = useState<IComicData>(
+    {} as IComicData
+  );
   const [offset, setOffset] = useState<number>(160);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>('');
 
   const comicsById = useMemo(() => new Map<number, IComic>(), []);
 
@@ -104,7 +113,17 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
 
   return (
     <ComicsContext.Provider
-      value={{ loadComics, comics, setComics, loadMoreComics, isLoading }}
+      value={{
+        loadComics,
+        comics,
+        setComics,
+        loadMoreComics,
+        isLoading,
+        filteredComics,
+        setFilteredComics,
+        search,
+        setSearch,
+      }}
     >
       {children}
     </ComicsContext.Provider>
