@@ -1,5 +1,11 @@
 // eslint-disable-next-line prettier/prettier
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 
 import api from '../../services/api';
 import { IComic, IComicData } from '../../types/IComicData';
@@ -12,7 +18,10 @@ interface IComicsProvider {
 interface IComicsContext {
   comics: IComicData;
   setComics: React.Dispatch<React.SetStateAction<IComicData>>;
+  comic: IComicData;
+  setComic: React.Dispatch<React.SetStateAction<IComicData>>;
   loadComics: () => Promise<void>;
+  loadOneComic: (comicId: string) => Promise<void>;
   loadMoreComics: () => Promise<void>;
   isLoading: boolean;
   filteredComics: IComicData;
@@ -39,6 +48,7 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
   children,
 }: IComicsProvider) => {
   const [comics, setComics] = useState<IComicData>({} as IComicData);
+  const [comic, setComic] = useState<IComicData>({} as IComicData);
   const [filteredComics, setFilteredComics] = useState<IComicData>(
     {} as IComicData
   );
@@ -76,6 +86,32 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
       console.log(error);
     }
   }, [setComics]);
+
+  const loadOneComic = useCallback(
+    async (comicId: string) => {
+      setIsLoading(true);
+      try {
+        const {
+          data: { data },
+        } = await api.get<IComicsResponse>(
+          `/comics/${comicId}`,
+          getComicsRequestParams()
+        );
+
+        setComic((prevState) => ({
+          ...prevState,
+          ...data,
+        }));
+
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+
+        console.log(error);
+      }
+    },
+    [setComic]
+  );
 
   const loadMoreComics = useCallback(async () => {
     setIsLoading(true);
@@ -123,6 +159,9 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
         setFilteredComics,
         search,
         setSearch,
+        comic,
+        setComic,
+        loadOneComic,
       }}
     >
       {children}
