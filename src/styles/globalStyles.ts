@@ -15,6 +15,7 @@ export const GlobalStyles = createGlobalStyle<GlobalStyleType>`
 
     body {
         font-size: 1.6rem;
-        font-family: ${({ theme }) => theme.fonts.family.primary} 
+        font-family: ${({ theme }) => theme.fonts.family.primary}; 
+        position: relative;
     }
 `;
