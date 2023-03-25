@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Spinner = styled.div`
+export interface ILoadingSpinner {
+  isOutTheButton?: boolean;
+}
+
+export const Spinner = styled.div<ILoadingSpinner>`
   @keyframes spinner {
     0% {
       transform: rotate(0deg);
@@ -17,4 +21,13 @@ export const Spinner = styled.div`
   border-top: 3px solid ${({ theme }) => theme.colors.red};
   border-radius: 50%;
   animation: spinner 0.8s linear infinite;
+
+  ${({ isOutTheButton }) =>
+    isOutTheButton &&
+    css`
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    `}
 `;
