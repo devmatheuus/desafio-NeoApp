@@ -4,11 +4,6 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
 
   background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
@@ -27,6 +22,19 @@ export const HeaderContainer = styled.header`
   h1 {
     font-size: ${({ theme }) => theme.fonts.sizes.large};
     font-family: ${({ theme }) => theme.fonts.family.secondary};
+  }
+
+  @media (max-width: 685px) {
+    > div {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    h1 {
+      font-size: ${({ theme }) => theme.fonts.sizes.medium};
+    }
   }
 `;
 
