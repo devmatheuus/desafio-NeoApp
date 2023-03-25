@@ -17,7 +17,7 @@ export const SearchInputContainer = styled.div`
   input {
     height: 3rem;
     padding: 0 1rem;
-
+    width: 100%;
     border-radius: 4px;
     border: none;
     outline: none;
