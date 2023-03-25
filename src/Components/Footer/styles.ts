@@ -5,6 +5,9 @@ export const FooterContainer = styled.footer`
   margin-top: 7rem;
   padding: 0.8rem;
 
+  position: absolute;
+  bottom: 0;
+
   font-size: ${({ theme }) => theme.fonts.sizes.small};
   background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
