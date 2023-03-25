@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  margin-top: 7rem;
   padding: 0.8rem;
-
+  margin-top: 5rem;
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
+  top: 100%;
+  height: 40px;
 
   font-size: ${({ theme }) => theme.fonts.sizes.small};
   background-color: ${({ theme }) => theme.colors.black};
