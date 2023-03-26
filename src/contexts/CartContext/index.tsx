@@ -22,38 +22,64 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: ICartProvider) => {
-  const [comicsInCart, setComicsInCart] = useState<IComicsInCart[]>([]);
+  const [comicsInCart, setComicsInCart] = useState<IComicsInCart[]>(() => {
+    const comicsInStorage = localStorage.getItem('@comics');
+
+    if (comicsInStorage) {
+      return JSON.parse(comicsInStorage);
+    }
+
+    return [];
+  });
 
   const addToCart = useCallback(
     (comic: IComic & { quantity: number }) => {
       const comicExists = comicsInCart.find((item) => item.id === comic.id);
 
       if (comicExists) {
-        setComicsInCart((state) =>
-          state.map((item) =>
+        setComicsInCart((state) => {
+          const newState = state.map((item) =>
             item.id === comic.id
               ? { ...item, quantity: item.quantity + comic.quantity }
               : item
-          )
-        );
+          );
+
+          localStorage.setItem('@comics', JSON.stringify(newState));
+
+          return newState;
+        });
       } else {
-        setComicsInCart((state) => [
-          ...state,
-          { ...comic, quantity: comic.quantity },
-        ]);
+        setComicsInCart((state) => {
+          const newState = [...state, { ...comic, quantity: comic.quantity }];
+
+          localStorage.setItem('@comics', JSON.stringify(newState));
+
+          return newState;
+        });
       }
     },
+
     [comicsInCart]
   );
 
   const removeFromCart = useCallback((comicId: number) => {
-    setComicsInCart((state) => state.filter((item) => item.id !== comicId));
+    setComicsInCart((state) => {
+      const newState = state.filter((item) => item.id !== comicId);
+      localStorage.setItem('@comics', JSON.stringify(newState));
+
+      return newState;
+    });
   }, []);
 
   const editComicQuantity = useCallback((comicId: number, quantity: number) => {
-    setComicsInCart((state) =>
-      state.map((item) => (item.id === comicId ? { ...item, quantity } : item))
-    );
+    setComicsInCart((state) => {
+      const newState = state.map((item) =>
+        item.id === comicId ? { ...item, quantity } : item
+      );
+
+      localStorage.setItem('@comics', JSON.stringify(newState));
+      return newState;
+    });
   }, []);
 
   return (
