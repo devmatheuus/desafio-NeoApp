@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Button } from '../../Components/Button';
 import { ComicsBox } from '../../Components/ComicsBox';
@@ -9,7 +9,12 @@ import { useComics } from '../../contexts/ComicsContext';
 import * as Styled from './styles';
 
 export const Home: React.FC = () => {
-  const { loadMoreComics, isLoading, search } = useComics();
+  const { loadComics, isLoading, search, setOffset } = useComics();
+
+  const handleLoadComics = useCallback(() => {
+    setOffset((offset) => offset + 40);
+    loadComics();
+  }, [loadComics, setOffset]);
 
   return (
     <>
@@ -20,7 +25,7 @@ export const Home: React.FC = () => {
           {isLoading && <LoadingSpinner />}
 
           {!isLoading && (
-            <Button text="Load more" loadMoreComics={loadMoreComics} />
+            <Button text="Load more" loadComics={handleLoadComics} />
           )}
         </Styled.GenericContainer>
       )}

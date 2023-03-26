@@ -4,16 +4,11 @@ import * as Styled from './styles';
 
 interface IButton {
   text: string;
-  loadMoreComics?: () => void;
+  loadComics?: () => void;
 }
 
-export const Button: React.FC<IButton> = ({
-  text,
-  loadMoreComics,
-}: IButton) => {
+export const Button: React.FC<IButton> = ({ text, loadComics }: IButton) => {
   return (
-    <Styled.ButtonContainer onClick={loadMoreComics}>
-      {text}
-    </Styled.ButtonContainer>
+    <Styled.ButtonContainer onClick={loadComics}>{text}</Styled.ButtonContainer>
   );
 };

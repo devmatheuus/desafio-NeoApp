@@ -20,14 +20,14 @@ interface IComicsContext {
   setComics: React.Dispatch<React.SetStateAction<IComicData>>;
   comic: IComicData;
   setComic: React.Dispatch<React.SetStateAction<IComicData>>;
-  loadComics: () => Promise<void>;
   loadOneComic: (comicId: string) => Promise<void>;
-  loadMoreComics: () => Promise<void>;
+  loadComics: () => Promise<void>;
   isLoading: boolean;
   filteredComics: IComicData;
   setFilteredComics: React.Dispatch<React.SetStateAction<IComicData>>;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   search: string;
+  setOffset: React.Dispatch<React.SetStateAction<number>>;
 }
 
 interface IComicsResponse {
@@ -52,7 +52,7 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
   const [filteredComics, setFilteredComics] = useState<IComicData>(
     {} as IComicData
   );
-  const [offset, setOffset] = useState<number>(160);
+  const [offset, setOffset] = useState<number>(120);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
 
@@ -64,29 +64,6 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
     });
   }
 
-  const loadComics = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const {
-        data: { data },
-      } = await api.get<IComicsResponse>(
-        '/comics',
-        getComicsRequestParams(120)
-      );
-
-      setComics((prevState) => ({
-        ...prevState,
-        ...data,
-      }));
-
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-
-      console.log(error);
-    }
-  }, [setComics]);
-
   const loadOneComic = useCallback(
     async (comicId: string) => {
       setIsLoading(true);
@@ -95,7 +72,7 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
           data: { data },
         } = await api.get<IComicsResponse>(
           `/comics/${comicId}`,
-          getComicsRequestParams()
+          getComicsRequestParams(offset)
         );
 
         setComic((prevState) => ({
@@ -110,10 +87,10 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
         console.log(error);
       }
     },
-    [setComic]
+    [offset]
   );
 
-  const loadMoreComics = useCallback(async () => {
+  const loadComics = useCallback(async () => {
     setIsLoading(true);
 
     try {
@@ -137,23 +114,20 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
         results: [...newComics],
       }));
 
-      setOffset((prevOffset) => prevOffset + 20);
-
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
 
       console.log(error);
     }
-  }, [setComics, setOffset, offset, comicsById]);
+  }, [offset, comicsById]);
 
   return (
     <ComicsContext.Provider
       value={{
-        loadComics,
         comics,
         setComics,
-        loadMoreComics,
+        loadComics,
         isLoading,
         filteredComics,
         setFilteredComics,
@@ -162,6 +136,7 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
         comic,
         setComic,
         loadOneComic,
+        setOffset,
       }}
     >
       {children}
