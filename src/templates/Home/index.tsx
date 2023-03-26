@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { Button } from '../../Components/Button';
+import { CartIcon } from '../../Components/CartIcon';
 import { ComicsBox } from '../../Components/ComicsBox';
 import { ComicsContainer } from '../../Components/ComicsContainer';
 import { Footer } from '../../Components/Footer';
@@ -29,6 +30,7 @@ export const Home: React.FC = () => {
           {!isLoading && <Button text="Load more" onClick={handleLoadComics} />}
         </Styled.GenericContainer>
       )}
+      <CartIcon />
       <Footer />
     </>
   );
