@@ -23,6 +23,12 @@ export const HeaderContainer = styled.header`
   h1 {
     font-size: ${({ theme }) => theme.fonts.sizes.large};
     font-family: ${({ theme }) => theme.fonts.family.secondary};
+
+    &:hover {
+      cursor: pointer;
+      color: ${({ theme }) => theme.colors.red};
+      transition: color 0.9s;
+    }
   }
 
   @media (max-width: 685px) {
@@ -43,4 +49,24 @@ export const HeaderActionsContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 3rem;
+`;
+
+export const HeaderCartContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  span {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-size: 1.2rem;
+    font-family: ${({ theme }) => theme.fonts.family.secondary};
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    transition: transform 0.2s;
+  }
 `;
