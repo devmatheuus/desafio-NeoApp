@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { theme } from '../styles/theme';
+import { CartProvider } from './CartContext';
 import { ComicsProvider } from './ComicsContext';
 
 interface IContexts {
@@ -13,7 +14,9 @@ export const Contexts = ({ children }: IContexts) => {
   return (
     <BrowserRouter>
       <ComicsProvider>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <CartProvider>
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </CartProvider>
       </ComicsProvider>
     </BrowserRouter>
   );

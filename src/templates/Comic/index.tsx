@@ -6,6 +6,7 @@ import { Button } from '../../Components/Button';
 import { Footer } from '../../Components/Footer';
 import { Header } from '../../Components/Header';
 import { LoadingSpinner } from '../../Components/LoadingSpinner';
+import { useCart } from '../../contexts/CartContext';
 import { useComics } from '../../contexts/ComicsContext';
 import * as Styled from './styles';
 
@@ -13,6 +14,7 @@ export const Comic: React.FC = () => {
   const { comicId } = useParams<{ comicId: string }>();
 
   const { comic, loadOneComic } = useComics();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     if (comicId) {
@@ -40,7 +42,10 @@ export const Comic: React.FC = () => {
                 title={comic.results[0].title}
               />
 
-              <Button text="Adicionar ao carrinho" />
+              <Button
+                text="Add to cart"
+                onClick={() => addToCart(comic.results[0])}
+              />
             </Styled.ComicContainerImage>
 
             <Styled.ComicContainerDescription>
