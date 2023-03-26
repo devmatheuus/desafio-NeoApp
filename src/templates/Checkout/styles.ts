@@ -10,7 +10,7 @@ export const CheckoutContainer = styled.div`
   max-width: 1440px;
   margin: 1rem auto;
   padding: 0 1rem;
-  gap: 2.5rem;
+  gap: 1rem;
 `;
 
 export const CheckoutList = styled.ul`
@@ -19,10 +19,13 @@ export const CheckoutList = styled.ul`
   /* gap: 1rem; */
   width: 50%;
   max-height: 400px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  border-radius: 8px 8px 0px 0px;
 
+  background-color: ${({ theme }) => theme.colors.white};
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
+    height: 2px;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -42,19 +45,53 @@ export const CheckoutList = styled.ul`
 export const CheckoutItem = styled.li`
   display: flex;
   gap: 3rem;
-  padding: 1rem 2rem;
-  width: 80%;
+  padding: 1rem;
   border-top: 1px solid #c3c3c3;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 4px;
 
   > div {
     gap: 1rem;
     display: flex;
     flex-direction: column;
+    width: 80%;
 
     h2 {
       font-size: 2rem;
+      white-space: pre-wrap;
       color: ${({ theme }) => theme.colors.black};
       font-weight: bold;
+    }
+
+    p {
+      font-size: ${({ theme }) => theme.fonts.sizes.small};
+      color: ${({ theme }) => theme.colors.black};
+      font-weight: bold;
+    }
+
+    div {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      > button:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 31px;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        color: ${({ theme }) => theme.colors.white};
+        background-color: ${({ theme }) => theme.colors.red};
+        cursor: pointer;
+
+        span {
+          font-size: 1.1rem;
+        }
+      }
     }
   }
 
@@ -78,6 +115,9 @@ export const CheckoutInfos = styled.div`
   width: 50%;
   padding: 1rem 2rem;
 
+  background-color: ${({ theme }) => theme.colors.white};
+
+  border-radius: 0px 0px 8px 8px;
   @media (max-width: 950px) {
     width: 100%;
   }
@@ -118,5 +158,30 @@ export const ButtonContainer = styled.div`
 
   @media (max-width: 500px) {
     flex-wrap: wrap;
+  }
+`;
+
+export const NoItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 117px);
+  width: 100%;
+  max-width: 1440px;
+  margin: 1rem auto;
+  gap: 2rem;
+  padding: 1rem;
+
+  color: ${({ theme }) => theme.colors.black};
+  font-weight: bold;
+
+  p {
+    font-size: ${({ theme }) => theme.fonts.sizes.medium};
+    text-align: center;
+  }
+
+  button {
+    background: ${({ theme }) => theme.colors.black};
   }
 `;
