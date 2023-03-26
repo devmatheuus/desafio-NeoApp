@@ -33,6 +33,10 @@ export const CheckoutList = styled.ul`
   ::-webkit-scrollbar-track {
     background-color: #eee;
   }
+
+  @media (max-width: 950px) {
+    width: 100%;
+  }
 `;
 
 export const CheckoutItem = styled.li`
@@ -53,6 +57,19 @@ export const CheckoutItem = styled.li`
       font-weight: bold;
     }
   }
+
+  @media (max-width: 950px) {
+    width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    > div {
+      justify-content: center;
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+  }
 `;
 
 export const CheckoutInfos = styled.div`
@@ -60,6 +77,10 @@ export const CheckoutInfos = styled.div`
   justify-content: space-between;
   width: 50%;
   padding: 1rem 2rem;
+
+  @media (max-width: 950px) {
+    width: 100%;
+  }
 `;
 
 export const CheckoutInfosDescription = styled.div`
@@ -80,7 +101,6 @@ export const ButtonContainer = styled.div`
   display: flex;
   width: 50%;
   justify-content: space-evenly;
-
   gap: 1rem;
 
   > button {
@@ -90,5 +110,13 @@ export const ButtonContainer = styled.div`
 
   button:last-child {
     background-color: green;
+  }
+
+  @media (max-width: 950px) {
+    width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
   }
 `;
