@@ -33,6 +33,7 @@ export const AddToCartModal: React.FC<Props> = ({ onClose, comic }) => {
             id="quantity"
             type="number"
             value={quantity}
+            min={1}
             onChange={(e) => setQuantity(e.target.value)}
           />
           <Styled.ModalButtonContainer>
