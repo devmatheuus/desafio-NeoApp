@@ -50,11 +50,16 @@ export const CheckoutItem = styled.li`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 4px;
 
+  figure {
+    min-width: 80px;
+  }
+
   > div {
     gap: 1rem;
     display: flex;
     flex-direction: column;
-    width: 80%;
+
+    width: 60%;
 
     h2 {
       font-size: 2rem;
@@ -72,6 +77,7 @@ export const CheckoutItem = styled.li`
     div {
       display: flex;
       align-items: flex-end;
+      flex-wrap: wrap;
       gap: 1rem;
       margin-top: 1rem;
 
