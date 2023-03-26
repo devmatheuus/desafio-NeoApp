@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { IComic } from '../../types/IComicData';
+import { AnimatedCardImage } from '../AnimatedCardImage';
 import * as Styled from './styles';
 
 interface IComicCard {
@@ -19,14 +20,7 @@ export const ComicCard: React.FC<IComicCard> = ({ comicData }: IComicCard) => {
 
   return (
     <Styled.CardContainer onClick={handleClick}>
-      <figure>
-        <img
-          src={`${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`}
-          alt={title}
-          title={title}
-          loading="lazy"
-        />
-      </figure>
+      <AnimatedCardImage thumbnail={thumbnail} title={title} />
       <p>{title}</p>
     </Styled.CardContainer>
   );
