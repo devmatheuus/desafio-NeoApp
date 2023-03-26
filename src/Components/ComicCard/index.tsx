@@ -19,7 +19,7 @@ export const ComicCard: React.FC<IComicCard> = ({ comicData }: IComicCard) => {
   }, [navigate, id]);
 
   return (
-    <Styled.CardContainer onClick={handleClick}>
+    <Styled.CardContainer onClick={handleClick} role="button">
       <AnimatedCardImage thumbnail={thumbnail} title={title} />
       <p>{title}</p>
     </Styled.CardContainer>

@@ -9,6 +9,7 @@ export const CardContainer = styled.div`
 
   font-family: ${({ theme }) => theme.fonts.family.primary};
   color: ${({ theme }) => theme.colors.black};
+  cursor: pointer;
 
   p {
     text-align: start;
