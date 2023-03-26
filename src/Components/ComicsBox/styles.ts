@@ -1,13 +1,27 @@
 import styled from 'styled-components';
 
-import CharacterX from '../../assets/characters/x23.svg';
+interface ISlider {
+  background: string;
+}
 
-export const Slider = styled.div`
+export const Slider = styled.div<ISlider>`
   width: 100%;
   height: 80vh;
+  position: relative;
 
-  background-image: url(${CharacterX});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: -1px 1px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(${({ background }) => background});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8;
+    z-index: -1;
+    transition: background-image 4s;
+  }
 `;
