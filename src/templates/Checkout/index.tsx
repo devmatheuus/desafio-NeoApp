@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { AnimatedCardImage } from '../../Components/AnimatedCardImage';
 import { Button } from '../../Components/Button';
 import { Footer } from '../../Components/Footer';
 import { Header } from '../../Components/Header';
+import { DiscountCouponModal } from '../../Components/Modals/DiscountCoupon';
 import * as Styled from './styles';
 
 const mock = [
@@ -37,8 +38,16 @@ const mock = [
 ];
 
 export const Checkout: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
+      {showModal && (
+        <DiscountCouponModal
+          onClose={() => setShowModal(false)}
+          onSubmit={() => console.log('oi')}
+        />
+      )}
       <Header />
       <Styled.CheckoutContainer>
         <Styled.CheckoutList>
@@ -69,11 +78,13 @@ export const Checkout: React.FC = () => {
           </Styled.CheckoutInfosPrice>
         </Styled.CheckoutInfos>
         <Styled.ButtonContainer>
-          <Button text="Add discount coupon" />
+          <Button
+            text="Add discount coupon"
+            onClick={() => setShowModal(true)}
+          />
           <Button text="Purchase" />
         </Styled.ButtonContainer>
       </Styled.CheckoutContainer>
-
       <Footer />
     </>
   );
