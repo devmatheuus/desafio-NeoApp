@@ -27,7 +27,11 @@ export const ItemsOnCartCounter: React.FC<IItemsOnCartCounter> = ({
 
   return (
     <Styled.CounterContainer title="Manipulate quantity of items">
-      <button onClick={subtractQuantity} title="Remove one item">
+      <button
+        onClick={subtractQuantity}
+        title="Remove one item"
+        disabled={quantity <= 1}
+      >
         -
       </button>
       <span>{quantity}</span>

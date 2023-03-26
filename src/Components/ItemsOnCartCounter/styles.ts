@@ -18,6 +18,9 @@ export const CounterContainer = styled.div`
     color: ${({ theme }) => theme.colors.white};
     font-size: ${({ theme }) => theme.fonts.sizes.small};
     cursor: pointer;
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   span {

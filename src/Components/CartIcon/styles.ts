@@ -6,14 +6,14 @@ export const CartIconContainer = styled.div`
   justify-content: center;
   padding: 2rem;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.red};
+  background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
 
   position: fixed;
   top: calc(100vh - 80px);
   left: 0;
   margin: 0 0px 45px 5px;
-  transition: background-color 0.9s;
+  transition: background-color 0.4s;
 
   > div {
     position: absolute;
@@ -28,7 +28,7 @@ export const CartIconContainer = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: ${({ theme }) => theme.colors.black};
-    transition: background-color 0.9s;
+    background-color: ${({ theme }) => theme.colors.red};
+    transition: background-color 0.4s;
   }
 `;
