@@ -1,6 +1,5 @@
 import React from 'react';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useCart } from '../../contexts/CartContext';
 import { getQuantityOfItemsOnCart } from '../../utils/getItemsOfItensOnCart';
@@ -21,14 +20,14 @@ export const Header: React.FC = () => {
         </div>
 
         <Styled.HeaderActionsContainer role="button">
+          <Styled.LinkContainer>
+            <Link to="/">COMICS</Link>
+            <Link to="/checkout">CHECKOUT</Link>
+          </Styled.LinkContainer>
           <SearchInput />
-          <Styled.HeaderCartContainer
-            role="button"
-            onClick={() => navigate('/checkout')}
-          >
-            {!!itensOnCart && <span>{itensOnCart}</span>}
-            <AiOutlineShoppingCart size="3rem" />
-          </Styled.HeaderCartContainer>
+
+          {/* {!!itensOnCart && <span>{itensOnCart}</span>} */}
+          {/* <AiOutlineShoppingCart size="3rem" /> */}
         </Styled.HeaderActionsContainer>
       </div>
     </Styled.HeaderContainer>

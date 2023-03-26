@@ -31,7 +31,7 @@ export const HeaderContainer = styled.header`
     }
   }
 
-  @media (max-width: 685px) {
+  @media (max-width: 800px) {
     > div {
       flex-direction: column;
       align-items: center;
@@ -49,24 +49,42 @@ export const HeaderActionsContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 3rem;
+
+  @media (max-width: 800px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 `;
 
-export const HeaderCartContainer = styled.div`
+export const LinkContainer = styled.div`
   display: flex;
   align-items: center;
-  position: relative;
+  gap: 2rem;
+  font-size: 1.4rem;
 
-  span {
-    position: absolute;
-    top: -10px;
-    right: -5px;
-    font-size: 1.2rem;
-    font-family: ${({ theme }) => theme.fonts.family.secondary};
-  }
-
-  &:hover {
-    cursor: pointer;
-    transform: translateY(-5px);
-    transition: transform 0.2s;
+  a {
+    color: ${({ theme }) => theme.colors.white};
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
   }
 `;
+
+// export const HeaderCartContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+
+//   span {
+//     position: absolute;
+//     top: -10px;
+//     right: -5px;
+//     font-size: 1.2rem;
+//     font-family: ${({ theme }) => theme.fonts.family.secondary};
+//   }
+
+//   &:hover {
+//     cursor: pointer;
+//     transform: translateY(-5px);
+//     transition: transform 0.2s;
+//   }
+// `;
