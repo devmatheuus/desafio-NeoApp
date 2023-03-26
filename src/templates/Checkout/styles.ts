@@ -58,7 +58,6 @@ export const CheckoutItem = styled.li`
     gap: 1rem;
     display: flex;
     flex-direction: column;
-
     width: 60%;
 
     h2 {
@@ -80,6 +79,7 @@ export const CheckoutItem = styled.li`
       flex-wrap: wrap;
       gap: 1rem;
       margin-top: 1rem;
+      /* width: 40%; */
 
       > button:nth-child(2) {
         display: flex;

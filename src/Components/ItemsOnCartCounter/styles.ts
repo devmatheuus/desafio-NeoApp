@@ -4,7 +4,6 @@ export const CounterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 80px;
   gap: 1rem;
   border: 1px solid ${({ theme }) => theme.colors.black};
   background: ${({ theme }) => theme.colors.black};

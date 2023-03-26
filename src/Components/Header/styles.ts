@@ -69,22 +69,3 @@ export const LinkContainer = styled.div`
     font-weight: bold;
   }
 `;
-
-// export const HeaderCartContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-
-//   span {
-//     position: absolute;
-//     top: -10px;
-//     right: -5px;
-//     font-size: 1.2rem;
-//     font-family: ${({ theme }) => theme.fonts.family.secondary};
-//   }
-
-//   &:hover {
-//     cursor: pointer;
-//     transform: translateY(-5px);
-//     transition: transform 0.2s;
-//   }
-// `;
