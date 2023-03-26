@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <Styled.FooterContainer>
       <p>
-        Feito com ❤️ por{' '}
+        Made with ❤️ by{' '}
         <a
           href="https://www.linkedin.com/in/devmatheuus/"
           target="_blank"
