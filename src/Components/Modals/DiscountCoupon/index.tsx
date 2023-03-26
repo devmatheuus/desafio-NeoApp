@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button } from '../../Button';
-import * as Styled from './styles';
+import * as Styled from '../modalStyles';
 
 interface Props {
   onClose: () => void;
