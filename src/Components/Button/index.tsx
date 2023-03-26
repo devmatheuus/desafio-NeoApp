@@ -4,11 +4,11 @@ import * as Styled from './styles';
 
 interface IButton {
   text: string;
-  loadComics?: () => void;
+  onClick?: () => void;
 }
 
-export const Button: React.FC<IButton> = ({ text, loadComics }: IButton) => {
+export const Button: React.FC<IButton> = ({ text, onClick }: IButton) => {
   return (
-    <Styled.ButtonContainer onClick={loadComics}>{text}</Styled.ButtonContainer>
+    <Styled.ButtonContainer onClick={onClick}>{text}</Styled.ButtonContainer>
   );
 };
