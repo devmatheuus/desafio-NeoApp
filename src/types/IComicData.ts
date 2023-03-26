@@ -119,3 +119,7 @@ interface IImages {
 interface IItems extends IVariant {
   role: string;
 }
+
+export interface IComicsInCart extends IComic {
+  quantity: number;
+}
