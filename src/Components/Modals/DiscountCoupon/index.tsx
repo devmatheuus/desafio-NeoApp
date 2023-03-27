@@ -1,14 +1,11 @@
 import React from 'react';
 
 import { useCart } from '../../../contexts/CartContext';
-import { IComicsInCart } from '../../../types/IComicData';
 import { Button } from '../../Button';
 import * as Styled from '../modalStyles';
 
 interface Props {
   onClose: () => void;
-  comicsInCart: IComicsInCart[];
-  setTotalCart: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const DiscountCouponModal: React.FC<Props> = ({ onClose }) => {
