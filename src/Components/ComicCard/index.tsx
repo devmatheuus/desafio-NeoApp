@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useCart } from '../../contexts/CartContext';
 import { IComic } from '../../types/IComicData';
 import { AnimatedCardImage } from '../AnimatedCardImage';
 import { Button } from '../Button';
@@ -15,8 +14,6 @@ interface IComicCard {
 export const ComicCard: React.FC<IComicCard> = ({ comicData }: IComicCard) => {
   const { thumbnail, title, id } = comicData;
   const [showModal, setShowModal] = useState(false);
-
-  const { addToCart } = useCart();
 
   const navigate = useNavigate();
 
@@ -33,7 +30,11 @@ export const ComicCard: React.FC<IComicCard> = ({ comicData }: IComicCard) => {
         <Styled.ExternalContainer>
           <Styled.CardContainer onClick={handleClick} role="button">
             <AnimatedCardImage thumbnail={thumbnail} title={title} />
-            <p>{title}</p>
+            {comicData.rare === true && (
+              <Styled.RareCardText>{title}</Styled.RareCardText>
+            )}
+
+            {!comicData.rare && <p>{title}</p>}
           </Styled.CardContainer>
           <Button text="Add to cart" onClick={() => setShowModal(true)} />
         </Styled.ExternalContainer>
