@@ -62,6 +62,8 @@ export interface IComic {
     items: IItems[];
     returned: number;
   };
+  rare?: boolean;
+  withDiscount?: boolean;
 }
 
 interface ITextObject {
