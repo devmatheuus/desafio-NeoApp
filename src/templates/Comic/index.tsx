@@ -7,9 +7,8 @@ import { Footer } from '../../Components/Footer';
 import { Header } from '../../Components/Header';
 import { LoadingSpinner } from '../../Components/LoadingSpinner';
 import { AddToCartModal } from '../../Components/Modals/AddToCart';
-import { useCart } from '../../contexts/CartContext';
 import { useComics } from '../../contexts/ComicsContext';
-import { numberFormatter } from '../../utils/numberFormmater';
+import { numberFormatter } from '../../utils/numberFormatter';
 import * as Styled from './styles';
 
 export const Comic: React.FC = () => {
@@ -18,7 +17,6 @@ export const Comic: React.FC = () => {
   const { comicId } = useParams<{ comicId: string }>();
 
   const { comic, loadOneComic } = useComics();
-  const { addToCart } = useCart();
 
   useEffect(() => {
     if (comicId) {
