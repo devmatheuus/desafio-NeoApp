@@ -109,9 +109,25 @@ export const ComicsProvider: React.FC<IComicsProvider> = ({
 
       const newComics = Array.from(comicsById.values());
 
+      const totalComics = newComics.length;
+      const numRareComics = Math.floor(totalComics * 0.1);
+
+      const rareComicIndices: number[] = [];
+
+      for (let i = 2; i < numRareComics; i++) {
+        rareComicIndices.push(Math.floor(Math.random() * totalComics));
+      }
+
+      const comicsWithRare = newComics.map((comic, index) => {
+        if (rareComicIndices.includes(index)) {
+          return { ...comic, rare: true };
+        }
+        return comic;
+      });
+
       setComics((prevState) => ({
         ...prevState,
-        results: [...newComics],
+        results: comicsWithRare,
       }));
 
       setIsLoading(false);

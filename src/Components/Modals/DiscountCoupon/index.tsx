@@ -1,18 +1,23 @@
 import React from 'react';
 
+import { useCart } from '../../../contexts/CartContext';
+import { IComicsInCart } from '../../../types/IComicData';
 import { Button } from '../../Button';
 import * as Styled from '../modalStyles';
 
 interface Props {
   onClose: () => void;
-  onSubmit: (coupon: string) => void;
+  comicsInCart: IComicsInCart[];
+  setTotalCart: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const DiscountCouponModal: React.FC<Props> = ({ onClose, onSubmit }) => {
+export const DiscountCouponModal: React.FC<Props> = ({ onClose }) => {
   const [coupon, setCoupon] = React.useState('');
 
+  const { addCoupon } = useCart();
+
   const handleSubmit = () => {
-    onSubmit(coupon);
+    addCoupon(coupon);
     onClose();
   };
 
@@ -32,8 +37,8 @@ export const DiscountCouponModal: React.FC<Props> = ({ onClose, onSubmit }) => {
             onChange={(e) => setCoupon(e.target.value)}
           />
           <Styled.ModalButtonContainer>
-            <Button text="Cancel" onClick={handleSubmit} />
-            <Button text="Add" onClick={onClose} />
+            <Button text="Cancel" onClick={onClose} />
+            <Button text="Add" onClick={handleSubmit} />
           </Styled.ModalButtonContainer>
         </Styled.ModalBody>
       </Styled.ModalContent>
