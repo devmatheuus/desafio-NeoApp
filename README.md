@@ -64,3 +64,5 @@ A utilização do MAP se mostrou eficiente e simplificou bastante a minha lógic
 Seguem abaixo os dois cupons de desconto:
 - COMMON25
 - RARE15
+
+**Observação:** Quadrinhos com títulos coloridos indicam que são raros. Fique de olho neles!
