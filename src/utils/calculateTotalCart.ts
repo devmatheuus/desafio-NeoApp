@@ -1,5 +1,5 @@
 import { IComicsInCart } from '../types/IComicData';
-import { numberFormatter } from './numberFormmater';
+import { numberFormatter } from './numberFormatter';
 
 export const calculateTotalCart = (comicsInCart: IComicsInCart[]) => {
   const total = comicsInCart.reduce((acc, item) => {
