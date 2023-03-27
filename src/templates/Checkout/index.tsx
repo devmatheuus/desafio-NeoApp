@@ -12,12 +12,13 @@ import { DiscountCouponModal } from '../../Components/Modals/DiscountCoupon';
 import { useCart } from '../../contexts/CartContext';
 import { calculateTotalCart } from '../../utils/calculateTotalCart';
 import { getQuantityOfItemsOnCart } from '../../utils/getItemsOfItensOnCart';
-import { numberFormatter } from '../../utils/numberFormmater';
+import { numberFormatter } from '../../utils/numberFormatter';
 import * as Styled from './styles';
 
 export const Checkout: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
   const { comicsInCart, removeFromCart } = useCart();
+
+  const [showModal, setShowModal] = useState(false);
 
   const itensOnCart = getQuantityOfItemsOnCart(comicsInCart);
 
@@ -25,12 +26,7 @@ export const Checkout: React.FC = () => {
 
   return (
     <>
-      {showModal && (
-        <DiscountCouponModal
-          onClose={() => setShowModal(false)}
-          onSubmit={() => console.log('oi')}
-        />
-      )}
+      {showModal && <DiscountCouponModal onClose={() => setShowModal(false)} />}
       <Header />
 
       {comicsInCart.length <= 0 && (
